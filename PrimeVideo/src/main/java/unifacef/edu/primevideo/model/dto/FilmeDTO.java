@@ -1,24 +1,12 @@
-package unifacef.edu.primevideo.model.entity;
-
-import jakarta.persistence.*;
-
-@Entity // entidade de banco de dados
-@Table(name="filme") // tabela filme do banco de dados
-public class FilmeEntity {
-    @Id // chave primária
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+package unifacef.edu.primevideo.model.dto;
+public class FilmeDTO {
     private Long id;
-    @Column(name="nome")
     private String nome;
-    @Column(name="anoLancamento")
     private int anoLancamento;
-    @Column(name="nota")
     private float nota;
-
-    public FilmeEntity() {
+    public FilmeDTO() {
     }
-
-    public FilmeEntity(Long id, String nome, int anoLancamento, float nota) {
+    public FilmeDTO(Long id, String nome, int anoLancamento, float nota) {
         this.id = id;
         this.nome = nome;
         this.anoLancamento = anoLancamento;
