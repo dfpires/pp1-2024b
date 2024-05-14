@@ -12,8 +12,12 @@ public class FilmeService {
     @Autowired
     FilmeRepository injecao;
     public FilmeDTO insere(FilmeDTO filmeDTO){
+        // convertemos FilmeDTO em FilmeEntity para enviar ao BD
         // o método está sendo chamado sem necessidade de instanciar um objeto
-        injecao.save();
+        // convertemos FilmeEntity em FilmeDTO para enviar ao frontend
+         FilmeEntity resposta = injecao.save(converteDTO(filmeDTO));
+        return converteEntity(resposta);
+
     }
     // converte FilmeDTO em FilmeEntity
     public FilmeEntity converteDTO(FilmeDTO filmeDTO){
