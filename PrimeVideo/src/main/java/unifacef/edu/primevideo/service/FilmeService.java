@@ -15,7 +15,8 @@ public class FilmeService {
         // convertemos FilmeDTO em FilmeEntity para enviar ao BD
         // o método está sendo chamado sem necessidade de instanciar um objeto
         // convertemos FilmeEntity em FilmeDTO para enviar ao frontend
-         FilmeEntity resposta = injecao.save(converteDTO(filmeDTO));
+        FilmeEntity entidade = converteDTO(filmeDTO);
+         FilmeEntity resposta = injecao.save(entidade);
         return converteEntity(resposta);
 
     }
