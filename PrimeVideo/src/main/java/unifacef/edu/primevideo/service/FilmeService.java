@@ -6,6 +6,10 @@ import unifacef.edu.primevideo.model.dto.FilmeDTO;
 import unifacef.edu.primevideo.model.entity.FilmeEntity;
 import unifacef.edu.primevideo.model.repository.FilmeRepository;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class FilmeService {
     // injeção de dependência
@@ -20,6 +24,42 @@ public class FilmeService {
         return converteEntity(resposta);
 
     }
+    // retorna todos os filmes - lista de filmes
+    public List<FilmeDTO> consultaTodos(){
+        return converteEntities(injecao.findAll());
+    }
+    // retorn um filme em específico, filtrado por id
+    public FilmeDTO consultaPorId(Long id){
+        // retorna um valor opcional, pois pode encontrar ou não
+        Optional<FilmeEntity> optional = injecao.findById(id);
+        if (optional.isPresent()){ // caso encontrou
+            return converteEntity(optional.get()); // converte Entity em DTO
+        }
+        else return null; // não encontrou
+    }
+    // remove um filme por id
+    public String remove(Long id){
+        if (injecao.existsById(id)){
+            injecao.deleteById(id);
+            return "Remoção com sucesso";
+        }
+        else {
+            return "Filme não encontrado";
+        }
+    }
+
+    // converte uma lista de FilmeEntity em uma lista de FilmeDTO
+    public List<FilmeDTO> converteEntities(List<FilmeEntity> filmesEntities){
+            // cria uma lista de FilmeDTO
+            List<FilmeDTO> filmesDTOs = new ArrayList<FilmeDTO>();
+
+            // percorre filmesEntities
+            for(FilmeEntity filmeEntity: filmesEntities){
+                filmesDTOs.add(converteEntity(filmeEntity));
+            }
+            return filmesDTOs;
+    }
+
     // converte FilmeDTO em FilmeEntity
     public FilmeEntity converteDTO(FilmeDTO filmeDTO){
         return new FilmeEntity(filmeDTO.getId(), filmeDTO.getNome(),
