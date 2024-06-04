@@ -15,15 +15,7 @@ public class FilmeEntity {
     @Column(name="nota")
     private float nota;
 
-    public FilmeEntity() {
-    }
 
-    public FilmeEntity(Long id, String nome, int anoLancamento, float nota) {
-        this.id = id;
-        this.nome = nome;
-        this.anoLancamento = anoLancamento;
-        this.nota = nota;
-    }
 
     public Long getId() {
         return id;

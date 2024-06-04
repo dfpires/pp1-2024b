@@ -34,4 +34,14 @@ public class FilmeController {
     public String remove(@PathVariable Long id){
         return injecao.remove(id);
     }
+
+    @PutMapping
+    public List<FilmeDTO> atualizaNota10(){
+        return injecao.atualizaNota10();
+    }
+
+    @PatchMapping("/{id}")
+    public FilmeDTO atualizaId(@PathVariable Long id, @RequestBody FilmeDTO filmeDTO){
+        return injecao.atualizaId(id, filmeDTO);
+    }
 }

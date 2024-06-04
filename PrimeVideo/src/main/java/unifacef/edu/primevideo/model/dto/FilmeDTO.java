@@ -4,14 +4,7 @@ public class FilmeDTO {
     private String nome;
     private int anoLancamento;
     private float nota;
-    public FilmeDTO() {
-    }
-    public FilmeDTO(Long id, String nome, int anoLancamento, float nota) {
-        this.id = id;
-        this.nome = nome;
-        this.anoLancamento = anoLancamento;
-        this.nota = nota;
-    }
+
 
     public Long getId() {
         return id;
