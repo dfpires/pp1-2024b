@@ -4,7 +4,7 @@ public class FilmeDTO {
     private String nome;
     private int anoLancamento;
     private float nota;
-
+    private DiretorDTO diretor;
 
     public Long getId() {
         return id;
@@ -36,5 +36,13 @@ public class FilmeDTO {
 
     public void setNota(float nota) {
         this.nota = nota;
+    }
+
+    public DiretorDTO getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(DiretorDTO diretor) {
+        this.diretor = diretor;
     }
 }

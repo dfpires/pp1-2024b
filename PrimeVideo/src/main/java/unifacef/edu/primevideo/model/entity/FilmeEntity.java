@@ -15,7 +15,9 @@ public class FilmeEntity {
     @Column(name="nota")
     private float nota;
 
-
+    @ManyToOne (fetch = FetchType.LAZY) // preguiçoso
+    @JoinColumn(name="diretor_id")
+    private DiretorEntity diretor;
 
     public Long getId() {
         return id;
@@ -47,5 +49,13 @@ public class FilmeEntity {
 
     public void setNota(float nota) {
         this.nota = nota;
+    }
+
+    public DiretorEntity getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(DiretorEntity diretor) {
+        this.diretor = diretor;
     }
 }
